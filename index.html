@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIRAMUN'26</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    background:black;
+    color:white;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)),
+    url("Adsız tasarım (7).png");
+
+    background-size:cover;
+    background-position:center;
+
+    opacity:1;
+
+    z-index:-3;
+}
+
+/* HIEROGLYPHS */
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background-image:
+    url("https://www.transparenttextures.com/patterns/black-paper.png");
+
+    opacity:0.25;
+
+    z-index:-2;
+}
+
+/* GOLD OVERLAY */
+
+.gold-overlay{
+    position:fixed;
+    inset:0;
+
+    background:
+    repeating-linear-gradient(
+        to right,
+        rgba(212,175,55,0.05),
+        rgba(212,175,55,0.05) 2px,
+        transparent 2px,
+        transparent 120px
+    );
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:28px 60px;
+
+    z-index:1000;
+
+    backdrop-filter:blur(12px);
+
+    background:rgba(0,0,0,0.3);
+
+    border-bottom:1px solid rgba(212,175,55,0.15);
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+
+    font-size:42px;
+    font-weight:700;
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    text-shadow:
+    0 0 10px rgba(212,175,55,0.5),
+    0 0 20px rgba(212,175,55,0.3);
+}
+
+/* DATES BOX SPECIAL */
+
+.dates-box{
+    position:relative;
+    overflow:hidden;
+}
+
+.dates-box::before{
+    content:"𓂀 𓆣 𓅓 𓃭";
+    position:absolute;
+    top:15px;
+    right:20px;
+    color:rgba(212,175,55,0.12);
+    font-size:30px;
+    letter-spacing:10px;
+}
+
+.dates-image{
+    width:100%;
+    margin-top:20px;
+    border-radius:14px;
+    border:1px solid rgba(212,175,55,0.25);
+
+    box-shadow:
+    0 0 20px rgba(212,175,55,0.15);
+
+    transition:0.4s;
+}
+
+.dates-image:hover{
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 30px rgba(212,175,55,0.35);
+}
+
+.dates-text{
+    margin-top:22px;
+    font-size:20px;
+    letter-spacing:2px;
+    color:#f1d27a;
+    font-family:'Cinzel', serif;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+    width:36px;
+
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:100%;
+    height:3px;
+
+    background:#d4af37;
+
+    transition:0.4s;
+}
+
+.hamburger.active span:nth-child(1){
+    transform:rotate(45deg) translateY(14px);
+}
+
+.hamburger.active span:nth-child(2){
+    opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+    transform:rotate(-45deg) translateY(-14px);
+}
+
+/* SIDE MENU */
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-420px;
+
+    width:420px;
+    height:100vh;
+
+    background:rgba(7,7,7,0.97);
+
+    border-left:1px solid rgba(212,175,55,0.15);
+
+    backdrop-filter:blur(20px);
+
+    transition:0.5s;
+
+    z-index:999;
+
+    padding:140px 50px;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu h2{
+    font-family:'Cinzel',serif;
+
+    color:#d4af37;
+
+    font-size:42px;
+
+    margin-bottom:50px;
+
+    text-align:center;
+}
+
+.menu-item{
+    width:100%;
+
+    padding:24px;
+
+    margin-bottom:25px;
+
+    border:1px solid rgba(212,175,55,0.18);
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.02);
+
+    color:#d4af37;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:0.35s;
+
+    letter-spacing:1px;
+}
+
+.menu-item:hover{
+    transform:translateX(8px);
+
+    border-color:#d4af37;
+
+    box-shadow:0 0 20px rgba(212,175,55,0.25);
+}
+
+/* MUSIC CONTROL BUTTON */
+
+.music-toggle{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+
+    width:60px;
+    height:60px;
+
+    background:rgba(212,175,55,0.9);
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    z-index:500;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    transition:0.3s;
+
+    box-shadow:0 0 20px rgba(212,175,55,0.5);
+}
+
+.music-toggle:hover{
+    transform:scale(1.1);
+
+    box-shadow:0 0 30px rgba(212,175,55,0.8);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:120px 20px;
+}
+
+.hero img{
+    width:820px;
+    max-width:95%;
+
+    opacity:0.92;
+
+    margin-bottom:20px;
+
+    filter:
+    drop-shadow(0 0 15px rgba(212,175,55,0.3));
+}
+
+.hero p{
+    max-width:700px;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#ddd;
+
+    margin-bottom:35px;
+
+    letter-spacing:1px;
+}
+
+.apply-btn{
+    padding:18px 48px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    color:black;
+
+    background:
+    linear-gradient(135deg,#f1d27a,#b8860b);
+
+    transition:0.35s;
+
+    box-shadow:
+    0 0 20px rgba(212,175,55,0.4);
+}
+
+.apply-btn:hover{
+    transform:translateY(-5px) scale(1.03);
+
+    box-shadow:
+    0 0 35px rgba(212,175,55,0.7);
+}
+
+/* INFO */
+
+.info-container{
+    display:flex;
+    gap:35px;
+
+    margin-top:70px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+.info-box{
+    width:320px;
+
+    background:rgba(0, 0, 0, 0.45);
+
+    border:1px solid rgba(212,175,55,0.2);
+
+    border-radius:14px;
+
+    padding:40px;
+
+    backdrop-filter:blur(8px);
+
+    transition:0.3s;
+}
+
+.info-box:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 0 25px rgba(212,175,55,0.25);
+}
+
+.info-box h3{
+    color:#d4af37;
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+    font-family:'Cinzel',serif;
+}
+
+.info-box p{
+    color:#ccc;
+
+    line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .logo{
+        font-size:28px;
+    }
+
+    header{
+        padding:20px;
+    }
+
+    .hero img{
+        width:100%;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .apply-btn{
+        font-size:18px;
+    }
+
+    .side-menu{
+        width:100%;
+    }
+
+    .music-toggle{
+        width:50px;
+        height:50px;
+        font-size:24px;
+        bottom:20px;
+        right:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC - OTOMATIK ÇALACAK -->
+<audio id="bgMusic" autoplay loop muted>
+    <source src="muzik.mp3" type="audio/mpeg">
+    Tarayıcınız ses oynatmayı desteklemiyor.
+</audio>
+
+<!-- MUSIC CONTROL BUTTON -->
+<button class="music-toggle" id="musicToggle" title="Müziği Aç/Kapat">🔊</button>
+
+<div class="gold-overlay"></div>
+
+<header>
+
+    <div class="logo">FIRAMUN'26</div>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</header>
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="sideMenu">
+
+    <h2>MENU</h2>
+
+    <div id="mainMenu">
+
+        <div class="menu-item" onclick="scrollToSection('home')">
+            Home
+        </div>
+
+        <div class="menu-item" onclick="openApplyMenu()">
+            Apply
+        </div>
+
+        <div class="menu-item" onclick="scrollToSection('committees')">
+            Our Committees
+        </div>
+
+        <div class="menu-item" onclick="scrollToSection('contact')">
+            Contact
+        </div>
+
+    </div>
+
+    <!-- APPLY SUBMENU -->
+
+    <div id="applySubmenu" style="display:none; margin-top:20px;">
+
+        <div class="menu-item" onclick="backToMenu()">
+            ← Back
+        </div>
+
+        <div class="menu-item" onclick="openForm('delegate')">
+            Delegate
+        </div>
+
+        <div class="menu-item" onclick="openForm('delegation')">
+            Delegation
+        </div>
+
+        <div class="menu-item" onclick="openForm('staff')">
+            Administrative Staff
+        </div>
+
+        <div class="menu-item" onclick="openForm('chairboard')">
+            Chairboard
+        </div>
+
+        <div class="menu-item" onclick="openForm('press')">
+            Press
+        </div>
+
+    </div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <img src="Adsız tasarım (7).png">
+
+    <p>
+        Be part of the legacy. Shape the future.
+    </p>
+
+    <button class="apply-btn" id="applyBtn">
+        APPLY NOW
+    </button>
+
+    <div class="info-container">
+
+        <div class="info-box dates-box">
+
+            <h3>OUR DATES</h3>
+
+            <img src="dates.png" class="dates-image">
+
+            <p class="dates-text">
+                28 • 29 • 30 August 2026
+            </p>
+
+        </div>
+
+        <div class="info-box">
+            <h3>OUR VENUE</h3>
+
+            <p>
+                TBA (To Be Announced)
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="committees" style="padding:120px 8%;">
+
+    <h1 style="
+        text-align:center;
+        color:#d4af37;
+        font-family:'Cinzel',serif;
+        font-size:58px;
+        margin-bottom:70px;
+        letter-spacing:4px;
+    ">
+        OUR COMMITTEES
+    </h1>
+
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+        gap:40px;
+    ">
+
+        <!-- COMMITTEE CARD -->
+
+        <div class="committee-card" onclick="openCommittee('UNSC')">
+            <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=2070&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>UNSC</h2>
+                <p>United Nations Security Council</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('UNODA')">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>UNODA</h2>
+                <p>Disarmament Affairs</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('DISEC')">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>DISEC</h2>
+                <p>Security & Disarmament</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('WHO')">
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1974&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>WHO</h2>
+                <p>World Health Organization</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('UNHRC')">
+            <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1974&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>UNHRC</h2>
+                <p>Human Rights Council</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('SOCHUM')">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>SOCHUM</h2>
+                <p>Social & Humanitarian</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('UNESCO')">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>UNESCO</h2>
+                <p>Education & Culture</p>
+            </div>
+        </div>
+
+        <div class="committee-card" onclick="openCommittee('Crisis')">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2070&auto=format&fit=crop">
+            <div class="committee-content">
+                <h2>CRISIS</h2>
+                <p>Continuous Crisis Committee</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact" style="padding:120px 8%;">
+
+    <h1 style="
+        text-align:center;
+        color:#d4af37;
+        font-family:'Cinzel',serif;
+        font-size:58px;
+        margin-bottom:60px;
+        letter-spacing:4px;
+    ">
+        CONTACT
+    </h1>
+
+    <div style="
+        max-width:900px;
+        margin:auto;
+        background:rgba(0,0,0,0.45);
+        border:1px solid rgba(212,175,55,0.2);
+        border-radius:18px;
+        padding:60px;
+        text-align:center;
+        backdrop-filter:blur(10px);
+    ">
+
+        <p style="font-size:22px; line-height:2;">
+            Email: firamuns@gmail.com
+            <br><br>
+
+            Instagram: @firamuns
+            <br><br>
+
+            Antalya, Türkiye
+        </p>
+
+    </div>
+
+</section>
+
+<!-- COMMITTEE MODAL -->
+
+<div id="committeeModal" style="
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+">
+
+    <div style="
+        width:90%;
+        max-width:800px;
+        background:#0a0a0a;
+        border:1px solid rgba(212,175,55,0.25);
+        border-radius:20px;
+        padding:50px;
+        color:white;
+        position:relative;
+    ">
+
+        <button onclick="closeCommittee()" style="
+            position:absolute;
+            top:20px;
+            right:20px;
+            background:none;
+            border:none;
+            color:#d4af37;
+            font-size:30px;
+            cursor:pointer;
+        ">
+            ×
+        </button>
+
+        <h1 id="committeeTitle" style="
+            color:#d4af37;
+            font-size:48px;
+            margin-bottom:30px;
+            font-family:'Cinzel',serif;
+        ">
+        </h1>
+
+        <p id="committeeDescription" style="
+            line-height:2;
+            color:#ddd;
+            font-size:18px;
+        ">
+        </p>
+
+    </div>
+
+</div>
+
+<style>
+
+.committee-card{
+    background:rgba(0,0,0,0.45);
+    border:1px solid rgba(212,175,55,0.15);
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.4s;
+    backdrop-filter:blur(8px);
+}
+
+.committee-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(212,175,55,0.3);
+}
+
+.committee-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.committee-content{
+    padding:30px;
+}
+
+.committee-content h2{
+    color:#d4af37;
+    font-size:34px;
+    margin-bottom:12px;
+    font-family:'Cinzel',serif;
+}
+
+.committee-content p{
+    color:#ccc;
+    line-height:1.8;
+}
+
+</style>
+
+<script>
+
+/* MUSIC CONTROL */
+
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+let isMuted = true;
+
+musicToggle.addEventListener('click', function() {
+    if (isMuted) {
+        bgMusic.muted = false;
+        musicToggle.textContent = '🔊';
+        musicToggle.style.background = 'rgba(212,175,55,0.9)';
+        isMuted = false;
+    } else {
+        bgMusic.muted = true;
+        musicToggle.textContent = '🔇';
+        musicToggle.style.background = 'rgba(150,150,150,0.7)';
+        isMuted = true;
+    }
+});
+
+// Otomatik oynat - bazı tarayıcılar sessiz başlamayı ister
+window.addEventListener('click', function() {
+    if (bgMusic.paused) {
+        bgMusic.play().catch(err => console.log('Müzik oynatılamadı:', err));
+    }
+}, { once: true });
+
+/* APPLY SUBMENU */
+
+function openApplyMenu(){
+    document.getElementById("mainMenu").style.display = "none";
+    document.getElementById("applySubmenu").style.display = "block";
+}
+
+function backToMenu(){
+    document.getElementById("mainMenu").style.display = "block";
+    document.getElementById("applySubmenu").style.display = "none";
+}
+
+/* SCROLL */
+
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({
+        behavior:"smooth"
+    });
+    
+    // Menüyü kapat
+    document.getElementById("sideMenu").classList.remove("active");
+    document.getElementById("hamburger").classList.remove("active");
+}
+
+/* COMMITTEE MODAL */
+
+function openCommittee(name){
+    const modal = document.getElementById("committeeModal");
+    const title = document.getElementById("committeeTitle");
+    const desc = document.getElementById("committeeDescription");
+
+    title.innerText = name;
+    desc.innerText = "Committee details will be added here later. You can place agenda items, study guides, background guides, and committee descriptions inside this section.";
+
+    modal.style.display = "flex";
+}
+
+function closeCommittee(){
+    document.getElementById("committeeModal").style.display = "none";
+}
+
+/* HAMBURGER MENU */
+
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const applyBtn = document.getElementById("applyBtn");
+
+applyBtn.addEventListener("click", () => {
+    sideMenu.classList.add("active");
+    hamburger.classList.add("active");
+    openApplyMenu();
+});
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("active");
+    
+    // Menü açılırsa submenu kapat
+    if (sideMenu.classList.contains("active")) {
+        document.getElementById("mainMenu").style.display = "block";
+        document.getElementById("applySubmenu").style.display = "none";
+    }
+});
+
+/* FORM LINKS */
+
+function openForm(type){
+    const forms = {
+        delegate: "YOUR_DELEGATE_FORM_LINK",
+        delegation: "YOUR_DELEGATION_FORM_LINK",
+        staff: "YOUR_ADMINISTRATIVE_STAFF_FORM_LINK",
+        chairboard: "YOUR_CHAIRBOARD_FORM_LINK",
+        press: "YOUR_PRESS_FORM_LINK"
+    };
+
+    window.open(forms[type], "_blank");
+}
+
+</script>
+
+</body>
+</html>
