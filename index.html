@@ -632,7 +632,7 @@ header.scrolled {
 }
 
 .committee-card img{
-    width:70%;
+    width:100%;
     height:250px;
     object-fit:cover;
     transition:0.4s;
@@ -1165,7 +1165,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('UNODC')">
             <div class="committee-card-img-container">
-                <img src="UNODC" alt="UNODC">
+                <img src="UNODC.png" alt="UNODC">
                 <div class="committee-img-overlay">
                     <span>Click to learn more about this committee</span>
                 </div>
@@ -1179,7 +1179,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('IAEA')">
             <div class="committee-card-img-container">
-                <img src="IAEA" alt="IAEA">
+                <img src="IAEA.png" alt="IAEA">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1191,7 +1191,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('CCPCJ')">
             <div class="committee-card-img-container">
-                <img src="CCPCJ" alt="CCPCJ">
+                <img src="CCPCJ.png" alt="CCPCJ">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1203,7 +1203,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('SPECPOL')">
             <div class="committee-card-img-container">
-                <img src="SPECPOL" alt="SPECPOL">
+                <img src="SPECPOL.png" alt="SPECPOL">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1215,7 +1215,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('Las Cortes de Granada')">
             <div class="committee-card-img-container">
-                <img src="LCDG" alt="LCDG">
+                <img src="LCDG.png" alt="Las Cortes de Granada">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1227,7 +1227,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('İttihat ve Terakki Cemiyeti')">
             <div class="committee-card-img-container">
-                <img src="ITC" alt="ITC">
+                <img src="ITC.png" alt="İttihat ve Terakki Cemiyeti">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1239,7 +1239,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('AD HOC: Council of the Gods')">
             <div class="committee-card-img-container">
-                <img src="GODS" alt="GODS">
+                <img src="GODS.png" alt="AD HOC: Council of the Gods">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1251,7 +1251,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('CC: Rise of Ramesses the Great')">
             <div class="committee-card-img-container">
-                <img src="CC" alt="CC">
+                <img src="CC.png" alt="CC: Rise of Ramesses the Great">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1263,7 +1263,7 @@ header.scrolled {
 
         <div class="committee-card" onclick="openCommittee('JCC: The Levantine Conflict')">
             <div class="committee-card-img-container">
-                <img src="JCC" alt="JCC">
+                <img src="JCC.png" alt="JCC: The Levantine Conflict">
                 <div class="committee-img-overlay"><span>Click to learn more</span></div>
             </div>
             <div class="committee-content">
@@ -1481,23 +1481,33 @@ function scrollToSection(id){
 /* COMMITTEE MODAL */
 
 const committeeData = {
-    'UNODC': { description: `The United Nations Office on Drugs and Crime (UNODC) has been established in 1997 by combining the United Nations International Drug Control Programme (UNDCP) and the Crime Prevention and Criminal Justice Division of the United Nations Office.
-UNODC aims to assist the United Nations in preventing and combating drug trafficking, international terrorism, and political corruption through coordinated and comprehensive efforts.
-In areas where conflict is prevalent, the state's dominance and control diminish. Border security is significantly reduced, and the rule of law becomes dysfunctional.
-As a result, such smuggling and crimes are facilitated.
-The harsh living conditions, hardships, and deprivations that refugees are forced to endure are pushing them into drug trafficking and making them targets for criminal networks.
-In this committee delegates will aim to understand the causes of drug smuggling operations in refugee communities and conflict zones, minimize the effects of this problem affecting the entire world.
-</p><p><strong>Agenda Item:</strong> Addressing drug smuggling operations in refugee communities and conflict zones</p><p>Under Secretary General: Mert SÜRÜCÜ
-
-<p>Academic Assistant: Beren BİLGİN</p></p>` 
-    'IAEA': { description: `` },
-    'CCPCJ': { description: `` },
-    'SPECPOL': { description: `` },
-    'Las Cortes de Granada': { description: `` },
-    'İttihat ve Terakki Cemiyeti': { description: `` },
-    'AD HOC: Council of the Gods': { description: `` },
-    'CC: Rise of Ramesses the Great': { description: `` },
-    'JCC: The Levantine Conflict': { description: `` }
+    'UNODC': {
+        description: ``
+    },
+    'IAEA': {
+        description: ``
+    },
+    'CCPCJ': {
+        description: ``
+    },
+    'SPECPOL': {
+        description: ``
+    },
+    'Las Cortes de Granada': {
+        description: ``
+    },
+    'İttihat ve Terakki Cemiyeti': {
+        description: ``
+    },
+    'AD HOC: Council of the Gods': {
+        description: ``
+    },
+    'CC: Rise of Ramesses the Great': {
+        description: ``
+    },
+    'JCC: The Levantine Conflict': {
+        description: ``
+    }
 };
 
 function openCommittee(name){
@@ -1511,6 +1521,7 @@ function openCommittee(name){
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 }
+
 function closeCommittee(){
     document.getElementById("committeeModal").style.display = "none";
     document.body.style.overflow = "auto";
