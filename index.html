@@ -1480,18 +1480,29 @@ function scrollToSection(id){
 
 /* COMMITTEE MODAL */
 
+const committeeData = {
+    'UNODC': { description: `` },
+    'IAEA': { description: `` },
+    'CCPCJ': { description: `` },
+    'SPECPOL': { description: `` },
+    'Las Cortes de Granada': { description: `` },
+    'İttihat ve Terakki Cemiyeti': { description: `` },
+    'AD HOC: Council of the Gods': { description: `` },
+    'CC: Rise of Ramesses the Great': { description: `` },
+    'JCC: The Levantine Conflict': { description: `` }
+};
+
 function openCommittee(name){
     const modal = document.getElementById("committeeModal");
     const title = document.getElementById("committeeTitle");
     const desc = document.getElementById("committeeDescription");
 
     title.innerText = name;
-    desc.innerText = "Committee details will be added here later. You can place agenda items, study guides, background guides, and committee descriptions inside this section.";
+    desc.innerText = committeeData[name].description;
 
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 }
-
 function closeCommittee(){
     document.getElementById("committeeModal").style.display = "none";
     document.body.style.overflow = "auto";
