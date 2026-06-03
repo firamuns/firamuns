@@ -1099,6 +1099,10 @@ header.scrolled {
             Press
         </div>
 
+        <div class="menu-item" onclick="openForm('obs')">
+            Observer
+        </div>
+
     </div>
 
 </div>
@@ -1625,11 +1629,12 @@ hamburger.addEventListener("click", () => {
 
 function openForm(type){
     const forms = {
-        delegate: "YOUR_DELEGATE_FORM_LINK",
-        delegation: "YOUR_DELEGATION_FORM_LINK",
-        staff: "YOUR_ADMINISTRATIVE_STAFF_FORM_LINK",
-        chairboard: "YOUR_CHAIRBOARD_FORM_LINK",
-        press: "YOUR_PRESS_FORM_LINK"
+        delegate: "https://docs.google.com/forms/d/17tlKIwhQw2x26_rgKoIx_DoT4qssms5tbwfBhi63MEs/edit?usp=drive_web&ouid=102953844714216758878",
+        delegation: "https://docs.google.com/forms/d/1KeAavpW0d3yirEJskCPpMg_pwCSiWeC6ERFp7_YPQy8/edit",
+        staff: "https://docs.google.com/forms/d/1vpSKRSGzYmssq2TiHz6tkkDKSAxpTqE85P4CVsPe9NI/edit",
+        obs: "https://docs.google.com/forms/d/1nxKvF2_R2zx4etS0ATMU-PPSF4HDsL4oMTZbwLvioMc/edit?usp=drive_web&ouid=102953844714216758878",
+        chairboard: "https://docs.google.com/forms/d/1S0vNJ8rxtBLbe-FBwBq4tXznICOq7x1HjabzcVVwMTY/edit?usp=drive_web&ouid=102953844714216758878",
+        press: "https://docs.google.com/forms/d/143xTPcNZgQjfK-Z0tiKLIgayNNlmsWhFqoOpe24crnk/edit?usp=drive_web&ouid=102953844714216758878"
     };
 
     window.open(forms[type], "_blank");
