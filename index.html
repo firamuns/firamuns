@@ -486,73 +486,17 @@ header.scrolled {
     }
 }
 
-.apply-btn{
-    padding:18px 48px;
 
-    border:2px solid transparent;
 
-    border-radius:8px;
 
-    font-size:22px;
 
-    font-weight:bold;
 
-    letter-spacing:2px;
 
-    cursor:pointer;
 
-    color:black;
 
-    background:
-    linear-gradient(135deg,#f1d27a,#b8860b);
 
-    transition:0.35s;
 
-    box-shadow:
-    0 0 20px rgba(212,175,55,0.4);
-    
-    animation:fadeInUp 1s ease-out 0.4s both;
-    
-    position:relative;
-    overflow:hidden;
-}
 
-.apply-btn::before {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transform:translateX(-100%);
-    transition:0.6s;
-}
-
-.apply-btn::after {
-    content:"";
-    position:absolute;
-    inset:-2px;
-    border:2px solid;
-    border-image:linear-gradient(135deg, #f1d27a, #b8860b) 1;
-    border-radius:8px;
-    opacity:0;
-    transition:0.3s;
-    pointer-events:none;
-}
-
-.apply-btn:hover::before {
-    transform:translateX(100%);
-}
-
-.apply-btn:hover{
-    transform:translateY(-5px) scale(1.03);
-
-    box-shadow:
-    0 0 35px rgba(212,175,55,0.7), inset 0 0 20px rgba(212,175,55,0.2);
-}
-
-.apply-btn:hover::after {
-    opacity:1;
-    box-shadow:0 0 20px rgba(212,175,55,0.6), inset 0 0 20px rgba(212,175,55,0.1);
-}
 
 /* INFO */
 
@@ -744,10 +688,7 @@ header.scrolled {
         margin-bottom:25px;
     }
 
-    .apply-btn{
-        font-size:16px;
-        padding:14px 32px;
-    }
+
 
     .info-container{
         gap:20px;
@@ -865,10 +806,7 @@ header.scrolled {
         margin-bottom:20px;
     }
 
-    .apply-btn{
-        font-size:14px;
-        padding:12px 28px;
-    }
+
 
     .info-box{
         width:100%;
@@ -930,6 +868,67 @@ header.scrolled {
 
 }
 
+
+
+/* ANCIENT EGYPT STUDY GUIDE BUTTON */
+.study-guide-btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    margin-top:18px;
+    padding:13px 18px;
+    border:1px solid #d4af37;
+    border-radius:4px;
+    background:linear-gradient(135deg, #2b1a0b 0%, #5a3512 100%);
+    color:#f1d27a;
+    font-family:'Cinzel',serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1.8px;
+    text-decoration:none;
+    text-transform:uppercase;
+    box-shadow:inset 0 0 0 1px rgba(241,210,122,.12), 0 5px 16px rgba(0,0,0,.35);
+    transition:transform .3s ease, background .3s ease, color .3s ease, box-shadow .3s ease;
+}
+
+.study-guide-btn::before {
+    content:'𓂀';
+    font-size:18px;
+    line-height:1;
+    color:#d4af37;
+}
+
+.study-guide-btn:hover {
+    transform:translateY(-3px);
+    background:linear-gradient(135deg, #d4af37 0%, #8b6914 100%);
+    color:#160d05;
+    box-shadow:0 8px 24px rgba(212,175,55,.3);
+}
+
+.study-guide-btn:hover::before,
+.study-guide-btn:visited::before {
+    color:inherit;
+}
+
+.study-guide-btn:focus-visible {
+    outline:2px solid #f1d27a;
+    outline-offset:4px;
+}
+
+
+
+/* VENUE IMAGE */
+.venue-image {
+    width:100%;
+    margin:18px 0 14px;
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:8px;
+    box-shadow:0 0 20px rgba(212,175,55,.15);
+    object-fit:cover;
+    aspect-ratio:4 / 3;
+}
 </style>
 </head>
 
@@ -1057,50 +1056,12 @@ header.scrolled {
             Home
         </div>
 
-        <div class="menu-item" onclick="openApplyMenu()">
-            Apply
-        </div>
-
         <div class="menu-item" onclick="scrollToSection('committees')">
             Our Committees
         </div>
 
         <div class="menu-item" onclick="scrollToSection('contact')">
             Contact
-        </div>
-
-    </div>
-
-    <!-- APPLY SUBMENU -->
-
-    <div id="applySubmenu" style="display:none; margin-top:20px;">
-
-        <div class="menu-item" onclick="backToMenu()">
-            ← Back
-        </div>
-
-        <div class="menu-item" onclick="openForm('delegate')">
-            Delegate
-        </div>
-
-        <div class="menu-item" onclick="openForm('delegation')">
-            Delegation
-        </div>
-
-        <div class="menu-item" onclick="openForm('staff')">
-            Administrative Staff
-        </div>
-
-        <div class="menu-item" onclick="openForm('chairboard')">
-            Chairboard
-        </div>
-
-        <div class="menu-item" onclick="openForm('press')">
-            Press
-        </div>
-
-        <div class="menu-item" onclick="openForm('obs')">
-            Observer
         </div>
 
     </div>
@@ -1117,10 +1078,6 @@ header.scrolled {
         Requiem Aeternam.
     </p>
 
-    <button class="apply-btn" id="applyBtn">
-        APPLY NOW
-    </button>
-
     <div class="info-container">
 
         <div class="info-box dates-box">
@@ -1136,9 +1093,10 @@ header.scrolled {
 
         <div class="info-box">
             <h3>OUR VENUE</h3>
+            <img class="venue-image" src="faculty-of-nursry.jpg" alt="Faculty of Nursry">
 
             <p>
-                TBA (To Be Announced)
+                Faculty of Nursry
             </p>
         </div>
 
@@ -1315,6 +1273,7 @@ header.scrolled {
                 <h2>UNODC</h2>
                 <p>United Nations Office on Drugs and Crime</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/UNODC Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1327,6 +1286,7 @@ header.scrolled {
                 <h2>IAEA</h2>
                 <p>International Atomic Energy Agency</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/IAEA Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1339,6 +1299,7 @@ header.scrolled {
                 <h2>CCPCJ</h2>
                 <p>The Commission on Crime Prevention and Criminal Justice</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/CCPCJ Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1351,6 +1312,7 @@ header.scrolled {
                 <h2>SPECPOL</h2>
                 <p>Special Political and Decolonization Committee</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/SPECPOL Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1363,6 +1325,7 @@ header.scrolled {
                 <h2>Las Cortes de Granada</h2>
                 <p>Las Cortes de Granada</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/Las Cortes de Granada Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1375,6 +1338,7 @@ header.scrolled {
                 <h2>İttihat ve Terakki Cemiyeti</h2>
                 <p>İttihat ve Terakki Cemiyeti</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/İttihat ve Terakki Cemiyeti Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1387,6 +1351,7 @@ header.scrolled {
                 <h2>AD HOC: Council of the Gods</h2>
                 <p>AD HOC: Council of the Gods</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/Council of the Gods Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1399,6 +1364,7 @@ header.scrolled {
                 <h2>CC: Rise of Ramesses the Great</h2>
                 <p>CC: Rise of Ramesses the Great</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/Rise of Ramesses the Great Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1411,6 +1377,7 @@ header.scrolled {
                 <h2>JCC: The Levantine Conflict</h2>
                 <p>JCC: The Levantine Conflict</p>
                 <div class="committee-details-hint">↓ Click for more details</div>
+                <a class="study-guide-btn" href="study-guides/The Levantine Conflict Study Guide.pdf" download onclick="event.stopPropagation()">Study Guide</a>
             </div>
         </div>
 
@@ -1596,18 +1563,6 @@ window.addEventListener('click', function() {
     }
 }, { once: true });
 
-/* APPLY SUBMENU */
-
-function openApplyMenu(){
-    document.getElementById("mainMenu").style.display = "none";
-    document.getElementById("applySubmenu").style.display = "block";
-}
-
-function backToMenu(){
-    document.getElementById("mainMenu").style.display = "block";
-    document.getElementById("applySubmenu").style.display = "none";
-}
-
 /* SCROLL */
 
 function scrollToSection(id){
@@ -1747,38 +1702,14 @@ function closeCommittee(){
 
 const hamburger = document.getElementById("hamburger");
 const sideMenu = document.getElementById("sideMenu");
-const applyBtn = document.getElementById("applyBtn");
-
-applyBtn.addEventListener("click", () => {
-    sideMenu.classList.add("active");
-    hamburger.classList.add("active");
-    openApplyMenu();
-});
 
 hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     sideMenu.classList.toggle("active");
     
     if (sideMenu.classList.contains("active")) {
-        document.getElementById("mainMenu").style.display = "block";
-        document.getElementById("applySubmenu").style.display = "none";
     }
 });
-
-/* FORM LINKS */
-
-function openForm(type){
-    const forms = {
-        delegate: "https://docs.google.com/forms/d/e/1FAIpQLScGH6J5b0gukXgrigB3YC77sXwTsJWxumPgMGPb4SMnC3ixGg/viewform?usp=dialog",
-        delegation: "https://docs.google.com/forms/d/e/1FAIpQLSeRzm-YEJiH_TbOPa0OTiWWhVK90o6Gt0t678T-GTGbHnJSbg/viewform?usp=dialog",
-        staff: "https://docs.google.com/forms/d/e/1FAIpQLSdPeDW1NBuPz_8qwf5HL7YLDxVsTeUZGweb4wlui4HkIM8TWw/viewform?usp=dialog",
-        obs: "https://docs.google.com/forms/d/e/1FAIpQLScZtw6s_ULC9QxpZ08cqrWwdpiLELMkD3MFJOcehAyWzp5fIg/viewform?usp=publish-editor",
-        chairboard: "https://docs.google.com/forms/d/e/1FAIpQLSda6dogGA8XKvn0d5dxdB8Jdoxl8jdm4pjBdhre-t8iJgXZtg/viewform?usp=dialog",
-        press: "https://docs.google.com/forms/d/e/1FAIpQLSfS0aAVV_UkxQkTcZImhti9e7q4YnrPuCBCt51QRPE_X3lp1A/viewform?usp=dialog"
-    };
-
-    window.open(forms[type], "_blank");
-}
 
 /* CLOSE MODAL WITH ESC */
 
